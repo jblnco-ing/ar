@@ -1,0 +1,62 @@
+<!doctype HTML>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+<script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+<script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+<script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
+
+<script>
+
+    function saludo() {
+        console.log('hola');
+    }
+
+    AFRAME.registerComponent('markerhandler', {
+
+        init: function () {
+            const animatedMarker = document.querySelector("#animated-marker");
+            const aEntity = document.querySelector("#animated-model");
+            
+            this.el.addEventListener('click', (ev, target)=>{
+                console.log('click ecene');
+                console.log(ev);
+                console.log(target);
+            });
+
+            console.log(animatedMarker);
+            
+            aEntity.addEventListener('click', function (ev, target) {
+                console.log('click ecene');
+            });
+            // // every click, we make our model grow in size :)
+            // animatedMarker.addEventListener('click', function (ev, target) {
+                // console.log('click marker');
+            // });
+        }
+    });
+</script>
+
+<body style='margin : 0px; overflow: hidden;'>
+    <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
+    <a-scene embedded vr-mode-ui="enabled: false"
+        arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+
+        <a-assets>
+            <img id="my-image" src="../4.zoo.png">
+            <img id="my-gif" src="../4.zoo.gif">
+        </a-assets>
+
+        <a-marker id="animated-marker" type='barcode' value='6'  markerhandler emitevents="true" cursor="rayOrigin: mouse" raycaster="objects: .clickable">
+            <a-image src="#my-image" scale="4 4 0" rotation="-90 0 0" id="animated-model" position="0 0.1 0" class=".clickable"></a-image>
+            <!-- <a-image height="4" width="4" rotation="-90 0 0" position="0 0.3 0" material="shader:gif;src:url(../4.zoo.gif); transparent:true; opacity:.6;" gif="" transparent></a-image> -->
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+
+</html>
