@@ -17,16 +17,12 @@
 
         <a-assets>
             <img id="my-image" src="../4.zoo.png">
+            <img id="my-gif" src="../4.zoo.gif">
         </a-assets>
 
-        <a-marker type='barcode' value='7'>
-        </a-marker>
-
         <a-marker id="animated-marker" type='barcode' value='6'>
-            <a-image src="#my-image" scale="2 2 0" rotation="-90 0 0" position="0 0.1 0"></a-image>
-            <a-entity geometry="primitive:plane" material="shader:gif;src:url(../4.zoo.gif); transparent:true;" scale="2 2 0" gif="" rotation="-90 0 0"
-            position="0 0.3 0">
-            </a-entity>
+            <a-image src="#my-image" height="4" width="4" rotation="-90 0 0" position="0 0.1 0"></a-image>
+            <a-image height="4" width="4" rotation="-90 0 0" position="0 0.3 0" material="shader:gif;src:url(../4.zoo.gif);" gif=""></a-image>
         </a-marker>
 
         <a-entity camera></a-entity>

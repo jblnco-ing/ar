@@ -21,8 +21,18 @@
         </a-assets>
 
         <a-marker id="animated-marker" type='barcode' value='6'>
+            <a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 20000" position="0 2 0">
+	            <a-image src="#my-image" height="4" width="4" rotation="0 0 0"></a-image>
+	            <a-image height="4" width="4" rotation="0 0 0" position="0 0 -0.1" material="shader:gif;src:url(../4.zoo.gif); transparent:true;opacity:.6;" gif="" transparent></a-image>
+	            <a-image height="4" width="4" rotation="0 0 0" position="0 0 0.1" material="shader:gif;src:url(../4.zoo.gif); transparent:true;opacity:.6;" gif="" transparent></a-image>
+	            </a-entity>
+            </a-entity>
+        </a-marker>
+
+        <a-marker id="animated-marker" type='barcode' value='7'>
             <a-image src="#my-image" scale="4 4 0" rotation="-90 0 0" position="0 0.1 0"></a-image>
-            <a-image height="4" width="4" rotation="-90 0 0" position="0 0.3 0" material="shader:gif;src:url(../4.zoo.gif); transparent:true; opacity:.6;" gif="" transparent></a-image>
+            <a-image height="4" width="4" rotation="-90 0 0" position="0 0.3 0"
+                material="shader:gif;src:url(../4.zoo.gif); transparent:true; opacity:.6;" gif="" transparent></a-image>
         </a-marker>
 
         <a-entity camera></a-entity>
